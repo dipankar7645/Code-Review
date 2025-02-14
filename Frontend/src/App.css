@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: "Fira Code", "Fira Mono", monospace;
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+main .left, main .right {
+  height: 100%;
+  flex-basis: 50%;
+  border-radius: 0.7rem;
+}
+
+main .left {
+  background-color: #000000;
+  position: relative;
+  padding: 1rem;
+  border: 1px solid #333;
+}
+
+.left .code {
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  border-radius: 0.7rem;
+  background-color: #0c0c0c;
+  overflow: hidden;
+}
+
+.left .review {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #4CAF50;
+  color: #ffffff;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.left .review:hover {
+  background-color: #45a049;
+}
+
+main .right {
+  background-color: #222;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  overflow: auto;
+  border-radius: 0.7rem;
+  border: 1px solid #444;
+}
+
+.right h3 {
+  font-size: 1.5rem;
+  color: #FFD700;
+  margin-bottom: 1rem;
+}
+
+.right p {
+  color: #ddd;
+  line-height: 1.5;
+}
+
+/* Syntax highlighting improvements */
+pre {
+  background: #1e1e1e;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "Fira Code", monospace;
+  font-size: 1rem;
+}
