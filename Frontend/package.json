@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@types/prismjs": "^1.26.5",
-    "@typescript-eslint/eslint-plugin": "^8.31.0",
     "axios": "^1.7.9",
     "prismjs": "^1.29.0",
     "react": "^19.1.0",
@@ -25,6 +24,7 @@
     "@eslint/js": "^9.19.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.19.0",
     "eslint-plugin-react-hooks": "^5.0.0",
