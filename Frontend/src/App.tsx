@@ -64,3 +64,8 @@ function App() {
 
 
 export default App
+
+
+
+// frontend run : npm run dev 
+// backend run : npx nodemon 
