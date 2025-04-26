@@ -3,25 +3,24 @@ import "prismjs/themes/prism-tomorrow.css"
 import Editor from "react-simple-code-editor"
 import prism from "prismjs"
 import Markdown from "react-markdown"
-import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/github-dark.css";
+import "highlight.js/styles/github-dark.css"
 import axios from 'axios'
 import './App.css'
 
 function App() {
-  const [ count, setCount ] = useState(0)
-  const [ code, setCode ] = useState(` function sum() {
+  const [count, setCount] = useState(0)
+  const [code, setCode] = useState(`function sum() {
   return 1 + 1
 }`)
 
-  const [ review, setReview ] = useState(``)
+  const [review, setReview] = useState(``)
 
   useEffect(() => {
     prism.highlightAll()
   }, [])
 
   async function reviewCode() {
-    const response = await axios.post('http://localhost:3000/ai/get-review', { code })
+    const response = await axios.post('https://code-review-backend-5r9m.onrender.com/ai/get-review', { code })
     setReview(response.data)
   }
 
@@ -47,25 +46,47 @@ function App() {
           </div>
           <div
             onClick={reviewCode}
-            className="review">Review</div>
+            className="review"
+          >
+            Review
+          </div>
         </div>
         <div className="right">
           <Markdown
-
-            rehypePlugins={[ rehypeHighlight ]}
-
-          >{review}</Markdown>
+            components={{
+              code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || '')
+                return !inline && match ? (
+                  <pre>
+                    <code
+                      className={className}
+                      {...props}
+                      dangerouslySetInnerHTML={{
+                        __html: prism.highlight(
+                          String(children),
+                          prism.languages[match[1]] || prism.languages.javascript,
+                          match[1]
+                        )
+                      }}
+                    />
+                  </pre>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                )
+              }
+            }}
+          >
+            {review}
+          </Markdown>
         </div>
       </main>
     </>
   )
 }
 
-
-
 export default App
 
-
-
 // frontend run : npm run dev 
-// backend run : npx nodemon 
+// backend run : npx nodemon
