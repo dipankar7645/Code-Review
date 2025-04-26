@@ -8,7 +8,7 @@ import axios from 'axios'
 import './App.css'
 
 function App() {
-
+  const [count, setCount] = useState(0)
   const [code, setCode] = useState(`function sum() {
   return 1 + 1
 }`)
@@ -88,3 +88,5 @@ function App() {
 
 export default App
 
+// frontend run : npm run dev 
+// backend run : npx nodemon
